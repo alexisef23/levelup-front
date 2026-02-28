@@ -1,0 +1,207 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg:        #080810;
+  --bg2:       #0d0d1a;
+  --bg3:       #111128;
+  --surface:   #13132a;
+  --surface2:  #1a1a35;
+  --border:    #2a2a55;
+  --border2:   #3a2a70;
+
+  --purple:    #7c3aed;
+  --purple2:   #9333ea;
+  --neon:      #a855f7;
+  --neon2:     #c084fc;
+  --neon3:     #e879f9;
+  --glow:      rgba(168, 85, 247, 0.35);
+  --glow2:     rgba(168, 85, 247, 0.15);
+
+  --text:      #f0e6ff;
+  --text2:     #b8a8d4;
+  --text3:     #7a6d9a;
+
+  --green:     #4ade80;
+  --red:       #f87171;
+  --yellow:    #fbbf24;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(124, 58, 237, 0.12), transparent),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(168, 85, 247, 0.06), transparent);
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Rajdhani', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+/* ── SCROLLBAR ─────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--purple); }
+
+/* ── GLOW UTILITIES ─────────────────────────────────────────────── */
+.glow-text {
+  text-shadow: 0 0 20px var(--glow), 0 0 40px rgba(168, 85, 247, 0.2);
+}
+
+.glow-border {
+  border: 1px solid var(--border2);
+  box-shadow: 0 0 15px var(--glow2), inset 0 0 15px rgba(168, 85, 247, 0.03);
+}
+
+.glow-border:hover {
+  border-color: var(--neon);
+  box-shadow: 0 0 25px var(--glow), inset 0 0 20px rgba(168, 85, 247, 0.05);
+}
+
+.glow-btn {
+  background: linear-gradient(135deg, var(--purple), var(--purple2));
+  box-shadow: 0 0 20px var(--glow), 0 4px 15px rgba(0,0,0,0.4);
+  transition: all 0.2s ease;
+}
+
+.glow-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--purple2), var(--neon));
+  box-shadow: 0 0 30px var(--glow), 0 6px 20px rgba(0,0,0,0.5);
+  transform: translateY(-1px);
+}
+
+.glow-btn:active:not(:disabled) { transform: translateY(0); }
+.glow-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* ── CARD ───────────────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  border-color: var(--border2);
+  box-shadow: 0 4px 30px rgba(168, 85, 247, 0.1);
+}
+
+/* ── INPUT ──────────────────────────────────────────────────────── */
+.field {
+  width: 100%;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: var(--text);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.field:focus {
+  border-color: var(--neon);
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.2);
+}
+
+.field::placeholder { color: var(--text3); }
+.field option { background: var(--bg3); }
+
+/* ── BADGE ──────────────────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 10px;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.badge-purple { background: rgba(168,85,247,0.15); color: var(--neon2); border: 1px solid rgba(168,85,247,0.3); }
+.badge-green  { background: rgba(74,222,128,0.12); color: var(--green); border: 1px solid rgba(74,222,128,0.25); }
+.badge-red    { background: rgba(248,113,113,0.12); color: var(--red);  border: 1px solid rgba(248,113,113,0.25); }
+.badge-yellow { background: rgba(251,191,36,0.12); color: var(--yellow);border: 1px solid rgba(251,191,36,0.25); }
+
+/* ── STAT BOX ───────────────────────────────────────────────────── */
+.stat-box {
+  background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--neon), transparent);
+}
+
+/* ── ANIMATIONS ─────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 15px var(--glow2); }
+  50%       { box-shadow: 0 0 30px var(--glow); }
+}
+@keyframes shimmer {
+  from { background-position: -200% center; }
+  to   { background-position: 200% center; }
+}
+
+.fade-up { animation: fadeUp 0.4s ease both; }
+.fade-up-1 { animation: fadeUp 0.4s 0.05s ease both; }
+.fade-up-2 { animation: fadeUp 0.4s 0.1s ease both; }
+.fade-up-3 { animation: fadeUp 0.4s 0.15s ease both; }
+.fade-up-4 { animation: fadeUp 0.4s 0.2s ease both; }
+
+/* ── DIVIDER ────────────────────────────────────────────────────── */
+.neon-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border2), transparent);
+}
+
+/* ── TABLE ──────────────────────────────────────────────────────── */
+.lu-table { width: 100%; border-collapse: collapse; }
+.lu-table th {
+  text-align: left;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text3);
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.lu-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(42,42,85,0.5);
+  font-size: 14px;
+}
+.lu-table tbody tr {
+  transition: background 0.15s;
+}
+.lu-table tbody tr:hover {
+  background: rgba(168, 85, 247, 0.05);
+}
